@@ -1,0 +1,26 @@
+body {
+  background-color: #ffffff;
+}
+
+h1 {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+}
+
+.fondo-rosa{
+    background-color: #c329c3
+}
+.fondo-morado{
+background-color: #8d048d
+}
+.fondo-blanco{
+    background-color: white
+}
+.fondo-morado-oscuro{background-color: #6f1aa0
+
+}
+
+
+.btn-success {
+  border-radius: 50px;
+}
