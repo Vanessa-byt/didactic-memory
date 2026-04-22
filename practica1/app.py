@@ -1,12 +1,11 @@
 from flask import Flask, render_template, url_for 
-import gestortareas
 
 
 app = Flask(__name__)
 
 @app.route('/')
 def inicio():
-    return render_template('inicio.html')
+    return render_template('nicio.html')
 
 @app.route('/crear_cuenta')
 def formulario():
