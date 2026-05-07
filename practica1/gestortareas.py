@@ -59,8 +59,6 @@ class GestorTareas:
         try:
             email = self.usuarios.find_one({"email": ObjectId(email)})
             if email:
-                #verificar el password tecleado por el usuario por el usuario con la base de datos
-                #regresar los atos del usuario
                 usuario['_id'] = str(usuario['_id'])
             return usuario
         except Exception as e:

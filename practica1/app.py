@@ -12,7 +12,6 @@ db = client["usuariosDB"]
 usuarios_collection = db["usuarios"]     
 tareas_collection = db["tareas"]
 
-# ---------------- FUNCIONES DE USUARIO ----------------
 
 def obtener_usuario(email: str, contraseña: str) -> Optional[Dict]:
     usuario = usuarios_collection.find_one({"email": email, "contraseña": contraseña})
@@ -34,7 +33,6 @@ def crear_usuario(nombre: str, email: str, contraseña: str, apellido: str) -> O
     except DuplicateKeyError:
         return None
 
-# ---------------- FUNCIONES DE TAREAS ----------------
 
 def crear_tarea(usuario_id: str, titulo: str, descripcion: str = "", 
                 fecha_limite: Optional[datetime] = None) -> Optional[str]:
@@ -86,7 +84,6 @@ def actualizar_estado_tarea(tarea_id: str, nuevo_estado: str) -> bool:
     )
     return resultado.modified_count > 0
 
-# ---------------- RUTAS ----------------
 
 @app.route("/crearcuenta", methods=["POST"])
 def crear_cuenta():
@@ -99,7 +96,7 @@ def crear_cuenta():
     if id_usuario:
         return redirect(url_for("gestor_tareas", usuario_id=id_usuario))
     else:
-        return "❌ El correo ya está registrado"
+        return "El correo ya esta registrado"
 
 @app.route("/login", methods=["POST"])
 def login():

@@ -14,7 +14,6 @@
   <nav class="navbar navbar-expand-lg bg-black">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="#">ListUP</a>
-      <a class="nav-link text-white" href="{{ url_for('inicio') }}">
         <i class="bi bi-person-dash-fill"></i> Cerrar sesión
       </a>
     </div>
@@ -23,13 +22,13 @@
   <div class="container mt-4">
     <h2>Gestor de Tareas</h2>
 
-    <!-- Crear tarea -->
-    <form method="POST" action="{{ url_for('crear_tarea_route', usuario_id=usuario_id) }}" class="row g-3 mb-4">
+
+    <form method="POST" action="{{ url_for('crear_tarea_route', usuario_id=usuario_id) }}" class="row mb-4">
       <div class="col-md-4">
-        <input type="text" name="titulo" class="form-control" placeholder="Título" required>
+        <input type="text" name="titulo" class="form-control" placeholder="Titulo" required>
       </div>
       <div class="col-md-4">
-        <input type="text" name="descripcion" class="form-control" placeholder="Descripción">
+        <input type="text" name="descripcion" class="form-control" placeholder="Descripcion">
       </div>
       <div class="col-md-4">
         <input type="date" name="fecha_limite" class="form-control">
@@ -39,13 +38,12 @@
       </div>
     </form>
 
-    <!-- Buscar tarea -->
+
     <form method="GET" action="{{ url_for('buscar_tareas_route', usuario_id=usuario_id) }}" class="d-flex mb-4">
       <input type="text" name="texto" class="form-control me-2" placeholder="Buscar tarea">
       <button class="btn btn-success">Buscar</button>
     </form>
 
-    <!-- Tarjetas de tareas -->
     <div class="row">
       {% for tarea in tareas %}
       <div class="col-md-4 mb-3">
@@ -54,23 +52,34 @@
             <h5 class="card-title">{{ tarea.titulo }}</h5>
             <p class="card-text">{{ tarea.descripcion }}</p>
             <p><strong>Estado:</strong> {{ tarea.estado }}</p>
-            <p><strong>Creación:</strong> {{ tarea.fecha_creacion }}</p>
-            <p><strong>Límite:</strong> {{ tarea.fecha_limite }}</p>
+            <p><strong>Creacion:</strong> {{ tarea.fecha_creacion }}</p>
+            <p><strong>Limite:</strong> {{ tarea.fecha_limite }}</p>
 
             <div class="d-flex">
-              <!-- Borrar -->
+
               <form method="POST" action="{{ url_for('eliminar_tarea_route', usuario_id=usuario_id, tarea_id=tarea._id) }}">
                 <button class="btn btn-danger btn-sm me-2">Borrar</button>
               </form>
-              <!-- Actualizar -->
+
               <form method="POST" action="{{ url_for('actualizar_tarea_route', usuario_id=usuario_id, tarea_id=tarea._id) }}">
                 <select name="estado" class="form-select form-select-sm me-2">
-                  <option value="pendiente" {% if tarea.estado=="pendiente" %}selected{% endif %}>Pendiente</option>
-                  <option value="completada" {% if tarea.estado=="completada" %}selected{% endif %}>Completada</option>
-                  <option value="cancelada" {% if tarea.estado=="cancelada" %}selected{% endif %}>Cancelada</option>
-                </select>
-                <button class="btn btn-secondary btn-sm">Actualizar</button>
-              </form>
+                  <option value="pendiente" {% if tarea.estado=="pendiente" %}
+                  selected{% endif %}>
+                  Pendiente
+                </option>
+
+                  <option value="completada" {% if tarea.estado=="completada" %}
+                  selected{% endif %}>
+                  Completada
+                </option>
+
+                  <option value="cancelada" {% if tarea.estado=="cancelada" %}
+                  selected{% endif %}>
+                  Cancelada
+                </option>
+              </select>
+
+              <button class="btn btn-secondary btn-sm">Actualizar</button>
             </div>
           </div>
         </div>
@@ -83,7 +92,7 @@
     <div>Mejora tu vida gestionando tareas</div>
     <div>©2026 gestor de tareas todos los derechos reservados</div>
     <div>
-      <a href="#" class="text-white">Términos y condiciones</a>
+      <a href="#" class="text-white">Terminos y condiciones</a>
       <a href="#" class="text-white ms-2">Privacidad</a>
     </div>
   </footer>
